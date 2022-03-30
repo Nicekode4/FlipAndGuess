@@ -64,7 +64,7 @@
 		var gh2 = gh / 2;
 		function drawGraph(val, pos, color) {
 			if (val == null) val = 0;
-			var size = Math.max(-gh2, Math.min(val * 0.1, gh2));
+			var size = Math.max(-gh2, Math.min(val * 0.01, gh2));
 			ctx.fillStyle = color;
 			ctx.fillRect(graphX, gh * pos + gh2, 1, size);
             alert("I am an alert box!");
