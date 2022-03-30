@@ -62,8 +62,10 @@
 		var gh = canvas.height / 3;
 		var gh2 = gh / 2;
 		function drawGraph(val, pos, color) {
-			if (val == null) val = 10;
-			alert("I am an alert box!");
+			if (val == null) val = 0;
+			var size = Math.max(-gh2, Math.min(val * 20, gh2));
+			ctx.fillStyle = color;
+			ctx.fillRect(graphX, gh * pos + gh2, 1, size);
 		}
 		drawGraph(acc.x, 0, "red");
 		drawGraph(acc.y, 1, "lime");
