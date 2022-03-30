@@ -14,4 +14,5 @@ function accelerometerUpdate(e) {
     // tilt. Not really needed. 
     xPosition = Math.atan2(aY, aZ);
     yPosition = Math.atan2(aX, aZ);
+    alert("hi");
  }
