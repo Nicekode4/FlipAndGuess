@@ -1,0 +1,19 @@
+.art1,
+.art2,
+.art3{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+.art1{
+    background-color: blue;
+}
+.art2{
+    background-color: green;
+}
+.art3{
+    background-color: red;
+}
+
