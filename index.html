@@ -29,7 +29,7 @@
 	}
 	</style>
 </head><body>
-    <h1>lelelele123456</h1>
+    <h1>lelelele1234567</h1>
 	<div id="dm_status">Please tap somewhere?</div>
 	<canvas id="dm_graphs" width="640" height="120"></canvas>
 	<footer><a href="https://yal.cc/js-device-motion">Related blog post</a></footer>
@@ -68,12 +68,13 @@
 			ctx.fillStyle = color;
 			ctx.fillRect(graphX, gh * pos + gh2, 1, size);
             console.log(val)
-            alert("I am an alert box!");
+            
 		}
 		drawGraph(acc.x, 0, "red");
 		drawGraph(acc.y, 1, "lime");
 		drawGraph(acc.z, 2, "aqua");
 		graphX = (graphX + 1) % canvas.width;
+        alert("I am an alert box!");
 	}
 	//
 	function resizeCanvas() {
