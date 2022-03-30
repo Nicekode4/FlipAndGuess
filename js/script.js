@@ -1,54 +1,17 @@
-/**
- * @param callback function(error)
- * @author YellowAfterlife
- **/
- function requestDeviceMotion(callback) {
-    if (window.DeviceMotionEvent == null) {
-        callback(new Error("DeviceMotion is not supported."));
-    } else if (DeviceMotionEvent.requestPermission) {
-        DeviceMotionEvent.requestPermission().then(function(state) {
-            if (state == "granted") {
-                callback(null);
-            } else callback(new Error("Permission denied by user"));
-        }, function(err) {
-            callback(err);
-        });
-    } else { // no need for permission
-        callback(null);
-    }
+if (window.DeviceMotionEvent == undefined) {
+    //No accelerometer is present. Use buttons. 
+    alert("no accelerometer");
 }
-function firstClick() {
-    requestDeviceMotion(function(err) {
-        if (err == null) {
-            window.removeEventListener("click", firstClick);
-            window.removeEventListener("touchend", firstClick);
-            window.addEventListener("devicemotion", function(e) {
-                // access e.acceleration, etc.
-            });
-        } else {
-            // failed; a JS error object is stored in `err`
-        }
-    });
+else {
+    alert("accelerometer found");
+    window.addEventListener("devicemotion", accelerometerUpdate, true);
 }
-window.addEventListener("click", firstClick);
-window.addEventListener("touchend", firstClick);
-
-/**
- * @param callback function(error)
- * @author YellowAfterlife
- **/
- function requestDeviceOrientation(callback) {
-    if (window.DeviceOrientationEvent == null) {
-        callback(new Error("DeviceOrientation is not supported."));
-    } else if (DeviceOrientationEvent.requestPermission) {
-        DeviceOrientationEvent.requestPermission().then(function(state) {
-            if (state == "granted") {
-                callback(null);
-            } else callback(new Error("Permission denied by user"));
-        }, function(err) {
-            callback(err);
-        });
-    } else { // no need for permission
-        callback(null);
-    }
-}
+function accelerometerUpdate(e) {
+    var aX = event.accelerationIncludingGravity.x*1;
+    var aY = event.accelerationIncludingGravity.y*1;
+    var aZ = event.accelerationIncludingGravity.z*1;
+    //The following two lines are just to calculate a
+    // tilt. Not really needed. 
+    xPosition = Math.atan2(aY, aZ);
+    yPosition = Math.atan2(aX, aZ);
+ }
