@@ -1,15 +1,8 @@
-function firstClick() {
-    requestDeviceMotion(function(err) {
-        if (err == null) {
-            window.removeEventListener("click", firstClick);
-            window.removeEventListener("touchend", firstClick);
-            window.addEventListener("devicemotion", function(e) {
-                // access e.acceleration, etc.
-            });
-        } else {
-            // failed; a JS error object is stored in `err`
-        }
-    });
+if (window.DeviceMotionEvent == undefined) {
+    //No accelerometer is present. Use buttons. 
+    alert("no accelerometer");
 }
-window.addEventListener("click", firstClick);
-window.addEventListener("touchend", firstClick);
+else {
+    alert("accelerometer found");
+    window.addEventListener("devicemotion", accelerometerUpdate, true);
+}
